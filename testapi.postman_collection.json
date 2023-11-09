@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "0e3ae792-fbed-4a87-9809-ee64cc8a5ff9",
+		"name": "testapi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31029040"
+	},
+	"item": [
+		{
+			"name": "GetPlayerList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/player",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"player"
+					]
+				},
+				"description": "testapi\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "CreatePlayerList",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"player name 3\",\r\n    \"position\": \"midfielder\",\r\n    \"playerSkills\": [\r\n        {\r\n            \"skill\": \"attack\",\r\n            \"value\": 60\r\n        },\r\n        {\r\n            \"skill\": \"speed\",\r\n            \"value\": 80\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/player",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"player"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteplayerlist",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer SkFabTZibXE1aE14ckpQUUxHc2dnQ2RzdlFRTTM2NFE2cGI4d3RQNjZmdEFITmdBQkE=",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"player name 4\",\r\n    \"position\": \"midfielder\",\r\n    \"playerSkills\": [\r\n        {\r\n            \"skill\": \"attack\",\r\n            \"value\": 120\r\n        },\r\n        {\r\n            \"skill\": \"speed\",\r\n            \"value\": 40\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/player/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"player",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateapilist",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"player name 3\",\r\n    \"position\": \"midfielder\",\r\n    \"playerSkills\": [\r\n        {\r\n            \"skill\": \"attack\",\r\n            \"value\": 60\r\n        },\r\n        {\r\n            \"skill\": \"speed\",\r\n            \"value\": 80\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/player/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"player",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getprocess",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"position\": \"midfielder\",\r\n        \"mainSkill\": \"inteligence\",\r\n        \"numberOfPlayers\": 3\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/team/process",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"team",
+						"process"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
