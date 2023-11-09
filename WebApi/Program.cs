@@ -26,8 +26,8 @@ var builder = WebApplication.CreateBuilder(args);
 
   var services = builder.Services;
   services.AddControllers();
-    //services.AddSqlite<DataContext>("DataSource=webApi.db");
-  services.AddSqlServer<DataContext>("Data Source=localhost; Initial Catalog=webAPI1;TrustServerCertificate=True;Integrated Security=SSPI");
+  services.AddSqlite<DataContext>("DataSource=webApi.db");
+  //services.AddSqlServer<DataContext>("Data Source=localhost; Initial Catalog=webAPI1;TrustServerCertificate=True;Integrated Security=SSPI");
   services.AddDataProtection().UseCryptographicAlgorithms(
       new AuthenticatedEncryptorConfiguration
       {

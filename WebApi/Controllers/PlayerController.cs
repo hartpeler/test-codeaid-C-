@@ -65,8 +65,9 @@ public class PlayerController : ControllerBase
             });
         }
         //enable auto increment first, to avoid error upon inserting it
-        Context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT Players ON");
-        Context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT PlayerSkills ON");
+        //wandi: this two lines below had to be uncommented if you are using SQL Server
+        //Context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT Players ON");
+        //Context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT PlayerSkills ON");
 
         //insert data
         Player player = new Player();
