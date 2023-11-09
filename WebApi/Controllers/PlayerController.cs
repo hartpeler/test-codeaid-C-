@@ -30,27 +30,36 @@ public class PlayerController : ControllerBase
   public async Task<ActionResult<List<Player>>> GetAll()
   {
         List<Player> data = await Context.Players
-        .GroupJoin(
-            Context.PlayerSkills,
-            player => player.Id,
-            playerSkill => playerSkill.PlayerId,
-            (player, playerSkills) => new Player
-            {
-                Id = player.Id,
-                Name = player.Name,
-                Position = player.Position,
-                PlayerSkills = playerSkills
-                    .Select(skill => new PlayerSkill
-                    {
-                        Id = skill.Id,
-                        Skill = skill.Skill,
-                        Value = skill.Value,
-                        PlayerId = skill.PlayerId
-                    })
-                    .ToList()
-            })
-        .ToListAsync();
-    return data;
+            .GroupJoin(
+                Context.PlayerSkills,
+                player => player.Id,
+                playerSkill => playerSkill.PlayerId,
+                (player, playerSkills) => new { player, playerSkills })
+            .SelectMany(
+                x => x.playerSkills.DefaultIfEmpty(),
+                (player, playerSkill) => new { player.player, playerSkill })
+            .GroupBy(
+                x => x.player,
+                x => x.playerSkill,
+                (player, playerSkills) => new Player
+                {
+                    Id = player.Id,
+                    Name = player.Name,
+                    Position = player.Position,
+                    PlayerSkills = playerSkills
+                        .Where(skill => skill != null)
+                        .Select(skill => new PlayerSkill
+                        {
+                            Id = skill.Id,
+                            Skill = skill.Skill,
+                            Value = skill.Value,
+                            PlayerId = skill.PlayerId
+                        })
+                        .ToList()
+                })
+            .ToListAsync();
+
+        return data;
   }
 
   [HttpPost]
